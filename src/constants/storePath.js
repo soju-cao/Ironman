@@ -1,0 +1,5 @@
+export const PUBLIC_KEY = 'PUBLIC_KEY';
+export const STORY_LIST = 'STORY_LIST';
+
+export const DASHBOARD_REDUCER = 'DASHBOARD_REDUCER';
+export const STORY_REDUCER = 'STORY_REDUCER';

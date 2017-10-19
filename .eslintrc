@@ -1,0 +1,52 @@
+{
+  "parser": "babel-eslint", // https://github.com/babel/babel-eslint
+
+  // fix importdeclare error
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": [
+   "standard",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "globals": {
+    "expect": true,
+    "sinon": true,
+    "__DEV__": true
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "react/jsx-uses-vars": "error",
+    "no-console": 0,
+    "no-var": 2,
+    "no-empty": 0,
+    "eqeqeq": 2,
+    "indent": ["error", 2],
+    "react/prop-types": 0,
+    "array-bracket-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "always"],
+    "no-multi-spaces": "error",
+    "space-before-function-paren": ["error", "always"],
+    "block-spacing": ["error", "always"],
+    "keyword-spacing": ["error", { "before": true, "after": true }],
+    "space-before-blocks": ["error", { "functions": "always", "keywords": "always", "classes": "always" }],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "no-irregular-whitespace": 2,
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "arrow-spacing": ["error", { "before": true, "after": true }]
+
+  },
+  "plugins": [
+    "react"
+  ]
+}

@@ -1,0 +1,16 @@
+$primary-color: #01A982;
+$hover-color: #eee;
+
+.link {
+  height: 0.15rem;
+  padding: 0.1rem;
+  text-align: center;
+  border-right: 1px solid $hover-color;
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.StoryEditorContainer {
+  padding: 0.1rem;
+}
