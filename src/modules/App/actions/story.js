@@ -32,3 +32,16 @@ export function fetchStoryList (params) {
       });
   };
 }
+
+export function deleteStoryItem (params) {
+  return async (dispatch) => {
+    // Returns a promise
+    return await API.deleteStoryItem(params)
+      .then(response => {
+      })
+      .catch(error => {
+        throw (error);
+      });
+  };
+}
+

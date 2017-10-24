@@ -9,12 +9,11 @@ import { List, InputItem, NavBar, Button, WhiteSpace } from "antd-mobile";
 import { createForm } from 'rc-form';
 // import { getPublicKey, login} from '../actions/profile';
 
-class Login extends Component {
+class Register extends Component {
   constructor (props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);
-    this.onRegisterClick = this.onRegisterClick.bind(this);
   }
 
   async handleSubmit (e) {
@@ -43,10 +42,6 @@ class Login extends Component {
     this.props.history.goBack();
   }
 
-  onRegisterClick () {
-    this.props.history.push('/register');
-  }
-
   render () {
     const { getFieldProps } = this.props.form;
     return (
@@ -63,12 +58,13 @@ class Login extends Component {
           <InputItem
             {...getFieldProps('password')}
             type="password"
-            placeholder="密码"></InputItem>
+            placeholder="输入密码"></InputItem>
+          <InputItem
+            {...getFieldProps('confirmPassword')}
+            type="password"
+            placeholder="再次输入密码"></InputItem>
           <List.Item>
-            <Button type="primary" style={{ color: 'white' }}>登录</Button><WhiteSpace />
-            <div style={{ width: '100%', color: '#108ee9', textAlign: 'center' }} onClick={this.onRegisterClick}>
-              没有账号？马上注册一个
-            </div>
+            <Button type="primary" style={{ color: 'white' }}>注册</Button><WhiteSpace />
           </List.Item>
         </List>
       </div>
@@ -92,5 +88,5 @@ function mapDispatchToProps (dispatch) {
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(createForm()(Login)));
+)(createForm()(Register)));
 

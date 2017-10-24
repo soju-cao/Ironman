@@ -4,7 +4,8 @@ const API_PATHS = {
   GET_PUBLIC_KEY: 'getPublicKey',
   LOGIN: 'login',
   SAVE_STORY_ITEM: 'article/save',
-  FETCH_ARTICLE_LIST: 'article/list'
+  FETCH_ARTICLE_LIST: 'article/list',
+  DELETE_STORY_ITEM: 'article/delete'
 };
 
 export const getPublicKey = async (params) => {
@@ -21,4 +22,8 @@ export const saveStoryItem = async (params) => {
 
 export const fetchStoryList = async (params) => {
   return await rest.post(API_PATHS.FETCH_ARTICLE_LIST, params);
+};
+
+export const deleteStoryItem = async (params) => {
+  return await rest.post(API_PATHS.DELETE_STORY_ITEM, params);
 };

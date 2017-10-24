@@ -5,16 +5,25 @@ import { withRouter } from "react-router-dom";
 import { Card, WhiteSpace, Icon, SearchBar, Flex } from "antd-mobile";
 import * as Path from 'constants/storePath';
 import style from 'styles/app.scss';
-import { fetchStoryList } from '../actions/story';
+import { fetchStoryList, deleteStoryItem } from '../actions/story';
+import { COMMENT_AGREE } from 'constants/constants';
 
 class StoryContent extends Component {
   constructor () {
     super();
+    this.state = {
+      commentType: COMMENT_AGREE
+    };
     this.shareStory = this.shareStory.bind(this);
   }
 
   shareStory () {
     this.props.history.push('/editor');
+  }
+
+  async onDeleteStoryItem (articleId) {
+    await this.props.deleteStoryItem({ articleId });
+    await this.props.fetchStoryList();
   }
 
   async componentDidMount () {
@@ -23,14 +32,16 @@ class StoryContent extends Component {
 
   render () {
     const { storyList=[] } = this.props;
-    const cardList = storyList.map(item => {
+    if (!storyList) return;
 
+    const cardList = storyList.map(item => {
       return (
         <div key={item.articleId}>
           <WhiteSpace size="xs"/>
           <Card full>
             <Card.Header
               title={item.title}
+              extra={<Icon type="delete" size="small" onClick={() => this.onDeleteStoryItem(item.articleId)}/>}
             />
             <Card.Body>
               <div>{item.content}</div>
@@ -38,7 +49,10 @@ class StoryContent extends Component {
             <Card.Footer
               content={
                 <div>
-                  <Icon type="smile" size="small" style={{ marginRight: '0.1rem' }}/>
+                  <Icon
+                    type={ this.state.commentType === COMMENT_AGREE ? "smile-o" : "smile" }
+                    size="small"
+                    style={{ marginRight: '0.1rem' }}/>
                   <Icon type="cry" size="small"/>
                 </div>}
             />
@@ -66,7 +80,9 @@ class StoryContent extends Component {
           </Flex.Item>
         </Flex>
         <WhiteSpace size="lg" />
-        { cardList }
+        <div>
+          { cardList }
+        </div>
       </div>
     );
   }
@@ -81,7 +97,8 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    fetchStoryList: (payload) => dispatch(fetchStoryList(payload))
+    fetchStoryList: (payload) => dispatch(fetchStoryList(payload)),
+    deleteStoryItem: (payload) => dispatch(deleteStoryItem(payload))
   };
 }
 

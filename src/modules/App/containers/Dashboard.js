@@ -4,8 +4,10 @@ import { withRouter } from "react-router-dom";
 
 import { TabBar, Icon, NoticeBar } from 'antd-mobile';
 import StoryContent from "./StoryContent";
+import Profile from "./Profile";
 import { TAB_ITEM_INDEX, TAB_ITEM_NOVEL, TAB_ITEM_PROFILE } from 'constants/constants';
 import NovelIndex from "./NovelIndex";
+import dashboard from "styles/dashboard.scss";
 
 class App extends Component {
   constructor () {
@@ -33,12 +35,12 @@ class App extends Component {
       content = <NovelIndex/>;
       break;
     case TAB_ITEM_PROFILE:
-      content = null;
+      content = <Profile/>;
       break;
     }
     return (
       <div>
-        <NoticeBar marqueeProps={{ loop: true, style: { padding: '0 0.15rem' } }}>
+        <NoticeBar className={dashboard.storyNoticeBar} marqueeProps={{ loop: true, style: { padding: '0 0.15rem' } }}>
           功能完善中，敬请期待。。。
         </NoticeBar>
         {content}

@@ -1,16 +1,12 @@
 ## Ironman
-
-# install dependencies
+1.install dependencies
 npm install
 
-# serve with hot reload at localhost:3000
-# 端口配置在 config/index.js
+2. set up dev environment
 npm run dev
 
-# build for production with minification
-npm run build
 
-### 目录结构
+## 目录结构
 
 ├── deploy                                          // 部署相关
 ├── src                                             // 根目录

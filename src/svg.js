@@ -9,4 +9,8 @@ require('asserts/smile.svg');
 require('asserts/smile-o.svg');
 require('asserts/cry.svg');
 require('asserts/cry-o.svg');
+require('asserts/delete.svg');
+require('asserts/login.svg');
+require('asserts/arrow_left.svg');
+require('asserts/arrow_right.svg');
 
