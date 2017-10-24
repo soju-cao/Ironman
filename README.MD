@@ -30,3 +30,7 @@ npm run dev
 └── webpack.config.js                               // webpack build 配置项
 └── webpack.dev.config.js                           // webpack dev 配置项
 ```
+### 技术栈
+- react
+- redux
+- ant-design-mobile
