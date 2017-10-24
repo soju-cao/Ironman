@@ -1,8 +1,8 @@
 ## Ironman
-###install dependencies
+### install dependencies
 npm install
 
-###set up dev environment
+### set up dev environment
 npm run dev
 
 
