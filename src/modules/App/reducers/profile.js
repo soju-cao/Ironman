@@ -5,12 +5,12 @@ import { toImmutable } from 'utils/immutableHelpers';
 const INITIAL_STATE = toImmutable({
 });
 
-function fetchStoryList (state, { response } = {}) {
-  return state.setIn([PATH.STORY_LIST], response);
+function getPublicKey (state, { response } = {}) {
+  return state.setIn([PATH.PUBLIC_KEY], response);
 }
 
 const handlers = {
-  [ ActionTypes.FETCH_STORY_LIST ]: fetchStoryList
+  [ ActionTypes.GET_PUBLIC_KEY ]: getPublicKey
 };
 
 export default function packagesReducer (state = INITIAL_STATE, action = {}) {

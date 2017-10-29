@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { WhiteSpace, WingBlank, Icon } from "antd-mobile";
+import { WhiteSpace, Icon, List } from "antd-mobile";
 
-import profile from "styles/profile.scss";
+// import profile from "styles/profile.scss";
 import { withRouter } from "react-router-dom";
 
 class Profile extends Component {
@@ -19,14 +19,15 @@ class Profile extends Component {
       <div>
         <WhiteSpace size="xl"/>
         <WhiteSpace size="xl"/>
-        <div className={profile.loginRegisterCard} onClick={this.onLoginOrRegisterClick}>
-          <div className={profile.loginIcon}>
-            <Icon type="login" size="lg"/>
-            <WingBlank size="lg" />
-            <div>登录/注册</div>
-          </div>
-          <Icon type="arrow_right" size="md"/>
-        </div>
+        <List>
+          <List.Item
+            thumb={<Icon type="login" size="lg"/>}
+            onClick={this.onLoginOrRegisterClick}
+            arrow="horizontal">
+            登录/注册
+          </List.Item>
+        </List>
+        <WhiteSpace size="xl"/>
       </div>
     );
   }

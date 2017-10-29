@@ -7,7 +7,7 @@ export function getPublicKey (params) {
     return await API.getPublicKey(params)
       .then(response => {
         dispatch( {
-          type: ActionType.GET_APP_DETAILS,
+          type: ActionType.GET_PUBLIC_KEY,
           response
         });
       })
@@ -24,6 +24,22 @@ export function login (params) {
       .then(response => {
         dispatch( {
           type: ActionType.LOGIN,
+          response
+        });
+      })
+      .catch(error => {
+        throw (error);
+      });
+  };
+}
+
+export function register (params) {
+  return async (dispatch) => {
+    // Returns a promise
+    return await API.register(params)
+      .then(response => {
+        dispatch( {
+          type: ActionType.REGISTER,
           response
         });
       })
