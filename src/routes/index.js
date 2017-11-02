@@ -10,5 +10,6 @@ export const routes = (
     <Route path='/login' component={Login}/>
     <Route path='/profile' component={Profile}/>
     <Route path='/register' component={Register}/>
+    <Route path='/home/:tabIndex' component={Dashboard}/>
   </Switch>
 );

@@ -8,6 +8,7 @@ import { JSEncrypt } from "jsencrypt";
 import { List, InputItem, NavBar, Button, WhiteSpace, Toast } from "antd-mobile";
 import { createForm } from 'rc-form';
 import { login, getPublicKey } from '../actions/profile';
+import { SUCCESS } from 'constants/responseStatus';
 
 class Login extends Component {
   constructor (props) {
@@ -33,18 +34,26 @@ class Login extends Component {
     this.props.history.goBack();
   }
 
-  onSubmitClick () {
+  async onSubmitClick () {
     if (!this.validateForm())
       return;
     let { userName, passWord } = this.props.form.getFieldsValue();
 
     const { publicKey } = this.props;
     passWord = this.encrypt(passWord);
-    this.props.login({ userName, passWord, publicKey });
+    await this.props.login({ userName, passWord, publicKey });
+
+    const { error } = this.props;
+    if (error.errorNum !== SUCCESS) {
+      Toast.fail(error.errorMsg, 2);
+      return;
+    }
+
+    const { loginResponse } = this.props;
     // todo get token and save it
-    // window.location.reload();
-    // localStorage.setItem('name', '123');
-    // console.log(localStorage.getItem('name'));
+    localStorage.setItem('userName', loginResponse.username);
+    // // console.log(localStorage.getItem('userName'));
+    this.props.history.push('/home/4');
   }
 
   onRegisterClick () {
@@ -108,9 +117,12 @@ class Login extends Component {
 }
 
 function mapStateToProps (state) {
-  const appStorePath = ['app', Path.LOGIN_REDUCER];
+  const appStorePath = ['app', Path.PROFILE_REDUCER];
+  const errorStorePath = ['common', Path.ERROR_REDUCER];
   return {
-    publicKey: state.getIn([...appStorePath, Path.PUBLIC_KEY])
+    publicKey: state.getIn([...appStorePath, Path.PUBLIC_KEY]),
+    loginResponse: state.getIn([...appStorePath, Path.LOGIN]),
+    error: state.getIn([...errorStorePath, Path.GLOBAL_ERROR])
   };
 }
 

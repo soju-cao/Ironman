@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { API_BASE_URL } from './devConfig';
+import { catchGlobalError } from 'src/modules/Common/actions/error';
+import { store } from 'src/index';
 
 axios.interceptors.request.use((config) => {
   return {
@@ -11,6 +13,9 @@ axios.interceptors.request.use((config) => {
 });
 
 axios.interceptors.response.use((response) => {
+  const error = response.data.error;
+  store.dispatch(catchGlobalError(error));
+
   const data = response.data.data;
   return data;
 }, (error) => {

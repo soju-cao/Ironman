@@ -90,6 +90,7 @@ class StoryContent extends Component {
 
 function mapStateToProps (state) {
   const storyStorePath = ['app', Path.STORY_REDUCER];
+  console.log(state);
   return {
     storyList: state.getIn([...storyStorePath, Path.STORY_LIST])
   };

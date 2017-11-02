@@ -18,6 +18,15 @@ class App extends Component {
     this.onTabItemChange = this.onTabItemChange.bind(this);
   }
 
+  componentWillMount () {
+    const { tabIndex } = this.props.match.params;
+    if (tabIndex) {
+      this.setState({
+        selectedTab: tabIndex,
+      });
+    }
+  }
+
   onTabItemChange (tabItem) {
     this.setState({
       selectedTab: tabItem,

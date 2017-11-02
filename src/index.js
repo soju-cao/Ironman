@@ -6,10 +6,11 @@ import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import App from './components/App';
 import "./svg";
+
 require('./styles/index.scss');
 require('./styles/index.less');
 
-const store = configureStore();
+export const store = configureStore();
 
 render(
   <Provider store={store}>

@@ -1,16 +1,16 @@
 import * as ActionTypes from '../ActionTypes';
-import * as Path from 'constants/storePath';
+import * as PATH from 'constants/storePath';
 import { toImmutable } from 'utils/immutableHelpers';
 
 const INITIAL_STATE = toImmutable({
 });
 
-function getActionDetails (state, { response } = {}) {
-  return state.setIn([Path.PUBLIC_KEY], response);
+function catchGlobalError (state, { error } = {}) {
+  return state.setIn([PATH.GLOBAL_ERROR], error);
 }
 
 const handlers = {
-  [ ActionTypes.GET_APP_DETAILS ]: getActionDetails
+  [ ActionTypes.CATCH_GLOBAL_ERROR ]: catchGlobalError
 };
 
 export default function reducer (state = INITIAL_STATE, action = {}) {
@@ -18,4 +18,3 @@ export default function reducer (state = INITIAL_STATE, action = {}) {
   if (!handler) return state;
   return handler(state, action);
 }
-

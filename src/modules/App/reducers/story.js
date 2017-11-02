@@ -3,6 +3,7 @@ import * as PATH from 'constants/storePath';
 import { toImmutable } from 'utils/immutableHelpers';
 
 const INITIAL_STATE = toImmutable({
+  [PATH.STORY_LIST]: [],
 });
 
 function fetchStoryList (state, { response } = {}) {
