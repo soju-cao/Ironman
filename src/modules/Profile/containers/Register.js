@@ -71,7 +71,6 @@ class Register extends Component {
       <div>
         <NavBar
           mode="light"
-          leftContent="取消"
           onLeftClick={this.goBack}>登录</NavBar>
         <List>
           <InputItem
@@ -112,9 +111,9 @@ class Register extends Component {
 }
 
 function mapStateToProps (state) {
-  const appStorePath = ['app', Path.LOGIN_REDUCER];
+  const profileStorePath = ['profile', Path.PROFILE_REDUCER];
   return {
-    publicKey: state.getIn([...appStorePath, Path.PUBLIC_KEY])
+    publicKey: state.getIn([...profileStorePath, Path.PUBLIC_KEY])
   };
 }
 

@@ -24,12 +24,6 @@ config.plugins.push(
   // 启动 minify
   new webpack.LoaderOptionsPlugin({ minimize: true }),
   // 抽取 CSS 文件
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false
-    },
-    sourceMap: false
-  }),
 );
 
 module.exports = config;

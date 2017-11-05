@@ -1,6 +1,6 @@
-export const TAB_ITEM_INDEX = '1';
+export const TAB_ITEM_STORY = 'story';
 export const TAB_ITEM_NOVEL = '2';
-export const TAB_ITEM_PROFILE = '4';
+export const TAB_ITEM_PROFILE = 'profile';
 
 export const BRAND = '闲饭';
 

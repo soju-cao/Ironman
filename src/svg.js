@@ -13,4 +13,5 @@ require('asserts/delete.svg');
 require('asserts/login.svg');
 require('asserts/arrow_left.svg');
 require('asserts/arrow_right.svg');
+require('asserts/setting.svg');
 

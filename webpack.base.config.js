@@ -2,10 +2,11 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 
 // 源代码的根目录
 const BUILD_PATH = path.resolve('../hello/www');
-var DEBUG = process.env.NODE_ENV !== 'production' ? true : false;
+const DEBUG = process.env.NODE_ENV !== 'production' ? true : false;
 
 const svgDirs = [
   require.resolve('antd-mobile').replace(/warn\.js$/, ''),
@@ -15,7 +16,7 @@ const svgDirs = [
 module.exports = {
   // devtool: 'eval-source-map',
   entry: {
-    index: './src/index.js',
+    index: './src/Root.js',
     vendor: ["react", "react-dom"]
   },
   output: {
@@ -35,6 +36,13 @@ module.exports = {
     }),
     new ExtractTextPlugin({filename: 'css/[name].css',
       allChunks: true
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize : true,
+      compress: {
+        warnings: false
+      },
+      sourceMap: false
     })
   ],
   resolve: {

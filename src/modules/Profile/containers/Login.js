@@ -53,7 +53,7 @@ class Login extends Component {
     // todo get token and save it
     localStorage.setItem('userName', loginResponse.username);
     // // console.log(localStorage.getItem('userName'));
-    this.props.history.push('/home/4');
+    this.props.history.push('/profile');
   }
 
   onRegisterClick () {
@@ -82,7 +82,6 @@ class Login extends Component {
       <div>
         <NavBar
           mode="light"
-          leftContent="取消"
           onLeftClick={this.goBack}>登录</NavBar>
         <List>
           <InputItem
@@ -117,11 +116,11 @@ class Login extends Component {
 }
 
 function mapStateToProps (state) {
-  const appStorePath = ['app', Path.PROFILE_REDUCER];
+  const profileStorePath = ['profile', Path.PROFILE_REDUCER];
   const errorStorePath = ['common', Path.ERROR_REDUCER];
   return {
-    publicKey: state.getIn([...appStorePath, Path.PUBLIC_KEY]),
-    loginResponse: state.getIn([...appStorePath, Path.LOGIN]),
+    publicKey: state.getIn([...profileStorePath, Path.PUBLIC_KEY]),
+    loginResponse: state.getIn([...profileStorePath, Path.LOGIN]),
     error: state.getIn([...errorStorePath, Path.GLOBAL_ERROR])
   };
 }
