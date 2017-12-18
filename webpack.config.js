@@ -5,8 +5,18 @@ const config = require('./webpack.base.config');
 config.plugins.push(
   // 官方文档推荐使用下面的插件确保 NODE_ENV
   new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+    'process.env': {
+      NODE_ENV: '"production"'
+    }
   }),
+  new webpack.optimize.UglifyJsPlugin({
+    minimize : true,
+    compress: {
+      warnings: false
+    },
+    sourceMap: false
+  }),
+  new webpack.HashedModuleIdsPlugin(),
   // split vendor js into its own file
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
@@ -20,6 +30,9 @@ config.plugins.push(
         ) === 0
       );
     }
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'runtime'
   }),
   // 启动 minify
   new webpack.LoaderOptionsPlugin({ minimize: true }),

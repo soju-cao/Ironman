@@ -23,6 +23,7 @@ class StoryContent extends Component {
 
   async onDeleteStoryItem (articleId) {
     await this.props.deleteStoryItem({ articleId });
+
     await this.props.fetchStoryList();
   }
 
@@ -50,10 +51,10 @@ class StoryContent extends Component {
               content={
                 <div>
                   <Icon
-                    type={ this.state.commentType === COMMENT_AGREE ? "smile-o" : "smile" }
+                    type={ this.state.commentType === COMMENT_AGREE ? "good-o" : "good" }
                     size="small"
                     style={{ marginRight: '0.1rem' }}/>
-                  <Icon type="cry" size="small"/>
+                  <Icon className={style.badIconStyle} type="good" size="small"/>
                 </div>}
             />
           </Card>

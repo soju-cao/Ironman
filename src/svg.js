@@ -14,4 +14,6 @@ require('asserts/login.svg');
 require('asserts/arrow_left.svg');
 require('asserts/arrow_right.svg');
 require('asserts/setting.svg');
+require('asserts/good.svg');
+require('asserts/good-o.svg');
 

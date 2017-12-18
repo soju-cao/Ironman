@@ -17,13 +17,13 @@ module.exports = {
   // devtool: 'eval-source-map',
   entry: {
     index: './src/Root.js',
-    vendor: ["react", "react-dom"]
+    vendor: ["react", "react-dom", "react-router-dom", "redux", "react-redux"]
   },
   output: {
     path: BUILD_PATH,
     publicPath: '/',
-    filename: 'js/[name].js',
-    chunkFilename: 'js/[id].js'
+    filename: 'js/[name].[hash].js',
+    chunkFilename: 'js/[name].[hash].js'
   },
   plugins: [
     // 每次打包前，先清空原来目录中的内容
@@ -36,13 +36,6 @@ module.exports = {
     }),
     new ExtractTextPlugin({filename: 'css/[name].css',
       allChunks: true
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      minimize : true,
-      compress: {
-        warnings: false
-      },
-      sourceMap: false
     })
   ],
   resolve: {

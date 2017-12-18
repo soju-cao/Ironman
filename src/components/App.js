@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { TabBar, Icon } from 'antd-mobile';
-import { TAB_ITEM_STORY, TAB_ITEM_NOVEL, TAB_ITEM_PROFILE } from 'constants/constants';
+import { TAB_ITEM_STORY, TAB_ITEM_PROFILE } from 'constants/constants';
 // import dashboard from "styles/dashboard.scss";
 
 class App extends Component {
@@ -24,8 +24,6 @@ class App extends Component {
     switch (tabItem) {
     case TAB_ITEM_STORY:
       this.props.history.push(`/${TAB_ITEM_STORY}`);
-      break;
-    case TAB_ITEM_NOVEL:
       break;
     case TAB_ITEM_PROFILE:
       this.props.history.push(`/${TAB_ITEM_PROFILE}`);
@@ -50,15 +48,6 @@ class App extends Component {
             data-seed="logId1"
             selected={selectedTab === TAB_ITEM_STORY}
             onPress={() => this.onTabItemChange(TAB_ITEM_STORY)}>
-          </TabBar.Item>
-          <TabBar.Item
-            icon={<Icon type="hot" size="lg"/>}
-            selectedIcon={<Icon type="hot-o" size="lg"/>}
-            title="小说"
-            key="小说"
-            data-seed="logId1"
-            selected={selectedTab === 'tab2'}
-            onPress={() => this.onTabItemChange(TAB_ITEM_NOVEL)}>
           </TabBar.Item>
           <TabBar.Item
             icon={<Icon type="notification" size="lg"/>}
